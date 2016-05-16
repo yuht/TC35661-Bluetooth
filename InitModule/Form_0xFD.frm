@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
+Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
 Begin VB.Form Form_0xFD 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "串口发送文件"
@@ -22,6 +22,22 @@ Begin VB.Form Form_0xFD
    ScaleHeight     =   8475
    ScaleWidth      =   12855
    StartUpPosition =   3  '窗口缺省
+   Begin VB.TextBox txtText4 
+      Height          =   870
+      Left            =   90
+      MultiLine       =   -1  'True
+      TabIndex        =   12
+      Top             =   855
+      Width           =   11715
+   End
+   Begin VB.CommandButton cmd 
+      Caption         =   "发送单条命令"
+      Height          =   765
+      Left            =   11970
+      TabIndex        =   11
+      Top             =   900
+      Width           =   810
+   End
    Begin MSCommLib.MSComm MSComm1 
       Left            =   11925
       Top             =   90
@@ -44,12 +60,12 @@ Begin VB.Form Form_0xFD
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   7080
+      Height          =   6225
       Left            =   90
       MultiLine       =   -1  'True
       ScrollBars      =   3  'Both
       TabIndex        =   10
-      Top             =   810
+      Top             =   1800
       Width           =   12660
    End
    Begin VB.TextBox Text2 
@@ -62,9 +78,9 @@ Begin VB.Form Form_0xFD
    End
    Begin VB.TextBox Text1 
       Height          =   330
-      Left            =   90
+      Left            =   45
       TabIndex        =   7
-      Top             =   8010
+      Top             =   8100
       Width           =   10770
    End
    Begin VB.CommandButton Command2 
@@ -172,6 +188,14 @@ Function sendhex(str As String)
     
 End Function
 
+Private Sub cmd_Click()
+    txtText4 = Trim(txtText4)
+    If Len(txtText4) Then
+        Text3 = "Com" & MSComm1.CommPort & "SEND: " & txtText4 & vbCrLf & Text3
+        sendhex (txtText4)
+    End If
+End Sub
+
 Private Sub Command1_Click()
     Dim Savetime As Double
     Dim a  As String
@@ -195,8 +219,9 @@ Private Sub Command1_Click()
             b = a
                 Debug.Print a
                 If InStr(a, "//") Then
-                    a = Trim(Left(a, InStr(a, "//") - 1))
+                    a = Left(a, InStr(a, "//") - 1)
                 End If
+                a = Trim(a)
                 Debug.Print a
 '                Exit Sub
                 If (Len(a)) Then
