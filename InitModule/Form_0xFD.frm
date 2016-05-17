@@ -175,6 +175,7 @@ Function sendhex(str As String)
 
     Dim zzz() As String
     Dim i As Double
+    str = Trim(str)
     zzz = Split(str, " ")
     ReDim kkk(UBound(zzz())) As Byte
     
