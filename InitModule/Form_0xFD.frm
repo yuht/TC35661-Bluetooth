@@ -1,12 +1,12 @@
 VERSION 5.00
-Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
+Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Begin VB.Form Form_0xFD 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "串口发送文件"
-   ClientHeight    =   8475
+   ClientHeight    =   8670
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   12855
+   ClientWidth     =   12780
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -19,24 +19,32 @@ Begin VB.Form Form_0xFD
    Icon            =   "Form_0xFD.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   8475
-   ScaleWidth      =   12855
+   ScaleHeight     =   8670
+   ScaleWidth      =   12780
    StartUpPosition =   3  '窗口缺省
+   Begin VB.CommandButton Command3 
+      Caption         =   "2.打开初始化文件"
+      Height          =   330
+      Left            =   6345
+      TabIndex        =   13
+      Top             =   315
+      Width           =   1590
+   End
    Begin VB.TextBox txtText4 
-      Height          =   870
+      Height          =   1590
       Left            =   90
       MultiLine       =   -1  'True
       TabIndex        =   12
-      Top             =   855
-      Width           =   11715
+      Top             =   810
+      Width           =   11985
    End
    Begin VB.CommandButton cmd 
       Caption         =   "发送单条命令"
-      Height          =   765
-      Left            =   11970
+      Height          =   1440
+      Left            =   12240
       TabIndex        =   11
-      Top             =   900
-      Width           =   810
+      Top             =   855
+      Width           =   420
    End
    Begin MSCommLib.MSComm MSComm1 
       Left            =   11925
@@ -60,44 +68,44 @@ Begin VB.Form Form_0xFD
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   6225
-      Left            =   90
+      Height          =   5505
+      Left            =   45
       MultiLine       =   -1  'True
       ScrollBars      =   3  'Both
       TabIndex        =   10
-      Top             =   1800
-      Width           =   12660
+      Top             =   2520
+      Width           =   12030
    End
    Begin VB.TextBox Text2 
-      Height          =   285
+      Height          =   330
       Left            =   2925
       TabIndex        =   9
       Text            =   "140"
-      Top             =   360
-      Width           =   1365
+      Top             =   315
+      Width           =   1230
    End
    Begin VB.TextBox Text1 
-      Height          =   330
+      Height          =   420
       Left            =   45
       TabIndex        =   7
       Top             =   8100
-      Width           =   10770
+      Width           =   12660
    End
    Begin VB.CommandButton Command2 
-      Caption         =   "清空"
-      Height          =   330
-      Left            =   7695
+      Caption         =   "清空接收区"
+      Height          =   4560
+      Left            =   12240
       TabIndex        =   6
-      Top             =   225
-      Width           =   1590
+      Top             =   3015
+      Width           =   420
    End
    Begin VB.CommandButton Command1 
-      Caption         =   "2.发送命令"
+      Caption         =   "3.发送初始化文件"
       Height          =   330
-      Left            =   6030
+      Left            =   8280
       TabIndex        =   5
-      Top             =   225
-      Width           =   1590
+      Top             =   315
+      Width           =   1995
    End
    Begin VB.Timer Timer2 
       Enabled         =   0   'False
@@ -107,10 +115,10 @@ Begin VB.Form Form_0xFD
    End
    Begin VB.TextBox txt 
       Height          =   330
-      Left            =   1620
+      Left            =   1507
       TabIndex        =   2
       Text            =   "115200"
-      Top             =   330
+      Top             =   315
       Width           =   1230
    End
    Begin VB.TextBox txtCOM10 
@@ -118,16 +126,16 @@ Begin VB.Form Form_0xFD
       Left            =   90
       TabIndex        =   1
       Text            =   "3"
-      Top             =   330
+      Top             =   315
       Width           =   1230
    End
    Begin VB.CommandButton Open 
-      Caption         =   "1.打开串口和文件"
+      Caption         =   "1.打开串口"
       Height          =   330
       Index           =   0
-      Left            =   4365
+      Left            =   4410
       TabIndex        =   0
-      Top             =   225
+      Top             =   315
       Width           =   1590
    End
    Begin VB.Label Label1 
@@ -171,11 +179,37 @@ Private Declare Function timeGetTime Lib "winmm.dll" () As Long
 Dim GetPath As String, GetFile As String, GetFullFile As String
     
 
+Function ClearUnHex(str As String) As String
+    Dim i As Integer
+    Dim j As Integer
+    Dim charx As String
+    Do
+        str = Replace(str, "  ", " ")
+    Loop While InStr(1, str, "  ")
+    
+    i = Len(str)
+    For j = 1 To Len(str)
+        charx = Mid(str, j, 1)
+        If charx <> " " Then
+            If (charx < "0" Or charx > "9") Then
+                If (UCase(charx) < "A" Or UCase(charx) > "F") Then
+                    Exit For
+                End If
+            End If
+        End If
+    Next
+    
+    ClearUnHex = Trim(Left(str, j - 1))
+    
+
+End Function
+
+
+
 Function sendhex(str As String)
 
     Dim zzz() As String
     Dim i As Double
-    str = Trim(str)
     zzz = Split(str, " ")
     ReDim kkk(UBound(zzz())) As Byte
     
@@ -190,19 +224,32 @@ Function sendhex(str As String)
 End Function
 
 Private Sub cmd_Click()
-    txtText4 = Trim(txtText4)
-    If Len(txtText4) Then
-        Text3 = "Com" & MSComm1.CommPort & "SEND: " & txtText4 & vbCrLf & Text3
-        sendhex (txtText4)
-    End If
+    sendd (txtText4)
 End Sub
 
-Private Sub Command1_Click()
+Function sendd(str As String)
     Dim Savetime As Double
     Dim a  As String
-    Dim b As String
-    
 
+    
+    a = ClearUnHex(str)
+    Debug.Print a
+    If (Len(a)) Then
+        Text3 = "Com" & MSComm1.CommPort & "SEND: " & a & Mid(InStr(str, "/"), Len(str) - InStr(str, "/")) & vbCrLf & Text3
+        sendhex (a)
+        Savetime = timeGetTime
+        Do
+            DoEvents
+            DoEvents
+            DoEvents
+            
+        Loop While timeGetTime < Savetime + CInt(Text2.Text)
+    End If
+End Function
+
+Private Sub Command1_Click()
+
+    Dim b As String
     
 '    DotPos = InStrRev(GetFullFile, "\")
 '    GetPath = Left(GetFullFile, DotPos)
@@ -216,26 +263,8 @@ Private Sub Command1_Click()
     Open GetFullFile For Input As #1
     
         Do While Not EOF(1)
-            Line Input #1, a
-            b = a
-                Debug.Print a
-                If InStr(a, "//") Then
-                    a = Left(a, InStr(a, "//") - 1)
-                End If
-                a = Trim(a)
-                Debug.Print a
-'                Exit Sub
-                If (Len(a)) Then
-                    Text3 = "Com" & MSComm1.CommPort & "SEND: " & b & vbCrLf & Text3
-                    sendhex (a)
-                    Savetime = timeGetTime
-                    Do
-                        DoEvents
-                        DoEvents
-                        DoEvents
-                        
-                    Loop While timeGetTime < Savetime + CInt(Text2.Text)
-                End If
+            Line Input #1, b
+            sendd (b)
         Loop
     Close #1
 End Sub
@@ -243,6 +272,15 @@ End Sub
 
 Private Sub Command2_Click()
     Text3 = ""
+End Sub
+
+Private Sub Command3_Click()
+    GetFullFile = GetFileName(Me.hWnd)
+    
+    If Len(GetFullFile) = 0 Then
+        Exit Sub
+    End If
+    Text3 = "文件已经打开，等待发送" & vbCrLf & Text3
 End Sub
 
 Private Sub MSComm1_OnComm()
@@ -256,11 +294,15 @@ End Sub
 Private Sub Open_Click(Index As Integer)
 
     On Error Resume Next
-    MSComm1.CommPort = txtCOM10.Text
-    MSComm1.Settings = txt.Text & ",n,8,1"
-    
+    If MSComm1.PortOpen = True Then
+        MSComm1.PortOpen = False
+        MSComm1.CommPort = txtCOM10.Text
+        MSComm1.Settings = txt.Text & ",n,8,1"
+    End If
     Err.Clear
-    MSComm1.PortOpen = True
+    If MSComm1.PortOpen = False Then
+        MSComm1.PortOpen = True
+    End If
     If Err Then
         MsgBox Err.Number & vbCrLf & Err.Description
         Err.Clear
@@ -269,14 +311,7 @@ Private Sub Open_Click(Index As Integer)
     Text3 = "串口" & txtCOM10 & "已打开" & vbCrLf & Text3
     '--------------------------------------------
 
-    
-    
-    GetFullFile = GetFileName(Me.hWnd)
-    
-    If Len(GetFullFile) = 0 Then
-        Exit Sub
-    End If
-    Text3 = "文件已经打开，等待发送" & vbCrLf & Text3
+
      
 End Sub
 

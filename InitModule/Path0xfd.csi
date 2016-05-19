@@ -1,9 +1,9 @@
 [History]
-1=#P0#=mb	#P1#=Command1_Click	#P2#=Fix0xFD/Form_0xFD/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160516091815	#P7#=0	#P8#=26	.
-2=#P0#=mb	#P1#=sendhex	#P2#=Fix0xFD/Form_0xFD/sendhex	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160517140632	#P7#=0	#P8#=5	.
-3=#P0#=mb	#P1#=cmd_Click	#P2#=Fix0xFD/Form_0xFD/cmd_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160516091357	#P7#=0	#P8#=6	.
-4=#P0#=mb	#P1#=Open_Click	#P2#=Fix0xFD/Form_0xFD/Open_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160513165544	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=Timer2_Timer	#P2#=Fix0xFD/Form_0xFD/Timer2_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160513165444	#P7#=0	#P8#=13	.
-6=#P0#=mb	#P1#=MSComm1_OnComm	#P2#=Fix0xFD/Form_0xFD/MSComm1_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160513165041	#P7#=0	#P8#=1	.
+1=#P0#=mb	#P1#=cmd_Click	#P2#=Fix0xFD/Form_0xFD/cmd_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160516091357	#P7#=0	#P8#=6	.
+2=#P0#=mb	#P1#=Command1_Click	#P2#=Fix0xFD/Form_0xFD/Command1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160516091815	#P7#=0	#P8#=26	.
+3=#P0#=mb	#P1#=Open_Click	#P2#=Fix0xFD/Form_0xFD/Open_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160513165544	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Timer2_Timer	#P2#=Fix0xFD/Form_0xFD/Timer2_Timer	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160513165444	#P7#=0	#P8#=13	.
+5=#P0#=mb	#P1#=MSComm1_OnComm	#P2#=Fix0xFD/Form_0xFD/MSComm1_OnComm	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20160513165041	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=sendhex	#P2#=Fix0xFD/Form_0xFD/sendhex	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160516091701	#P7#=0	#P8#=8	.
 7=#P0#=mb	#P1#=GetFileName	#P2#=Fix0xFD/FileDialog/GetFileName	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160513154854	#P7#=0	#P8#=7	.
 8=#P0#=mb	#P1#=SaveFileName	#P2#=Fix0xFD/FileDialog/SaveFileName	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20160513154830	#P7#=0	#P8#=1	.
