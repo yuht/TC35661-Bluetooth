@@ -1,7 +1,7 @@
 Type=Exe
 Module=FileDialog; FileDialog.bas
 Form=Form_0xFD.frm
-Object={648A5603-2C6E-101B-82B6-000000000014}#1.1#0; MSCOMM32.OCX
+Object={648A5603-2C6E-101B-82B6-000000000014}#1.1#0; mscomm32.ocx
 IconForm="Form_0xFD"
 Startup="Form_0xFD"
 HelpFile=""
@@ -14,7 +14,7 @@ Description="TC356661"
 CompatibleMode="0"
 MajorVer=1
 MinorVer=0
-RevisionVer=31
+RevisionVer=32
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionCompanyName="Microsoft"
