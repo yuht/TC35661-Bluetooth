@@ -1,4 +1,13 @@
 //---------------------------
+2016.5.20
+	1.android方式和ios方式不同。 android使用传统蓝牙方式， ios使用BLE方式。
+	2.对代码进行了android和ios区分。
+	3.android需要配对输入PIN，需要对方和自己的蓝牙地址。
+	4.ios使用BLE，使用SERVICE概念。对SERVICE进行读写。
+	4.1 该模块代码包含2个SERVICE，一个是device service，一个是功能service。
+
+
+//---------------------------
 2016.5.18增加
 	1.该代码在android蓝牙可以使用。
 	1.1注释掉的初始化代码为ios所使用的service。不影响android
