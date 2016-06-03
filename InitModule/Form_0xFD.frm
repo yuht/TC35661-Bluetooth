@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
+Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
 Begin VB.Form Form_0xFD 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "串口发送文件"
@@ -296,9 +296,9 @@ Private Sub Open_Click(Index As Integer)
     On Error Resume Next
     If MSComm1.PortOpen = True Then
         MSComm1.PortOpen = False
-        MSComm1.CommPort = txtCOM10.Text
-        MSComm1.Settings = txt.Text & ",n,8,1"
     End If
+    MSComm1.CommPort = txtCOM10.Text
+    MSComm1.Settings = txt.Text & ",n,8,1"
     Err.Clear
     If MSComm1.PortOpen = False Then
         MSComm1.PortOpen = True
