@@ -60,7 +60,8 @@
 1B 00 00 D3 22 14 00 00 02 18 10 6E E2 17 EF DA 97 4C 95 9B 3A 6E 02 43 53 53 49 //UUID 6E10  18可写|通知
 1F 00 00 D3 23 18 00 50 02 10 6E E2 17 EF DA 97 4C 95 9B 3A 6E 02 43 53 53 49 01 00 01 03 07 
 
-0D 00 00 E1 3D 06 00 24 0C 03 04 04 24 //send HCI command "24 0C 03 04 04 24 // Write Class of Device Command  ClassOfDevice:04 04 24
+0d 00 00 e1 3d 06 00 24 0c 03 10 05 01
+//0D 00 00 E1 3D 06 00 24 0C 03 04 04 24 //send HCI command "24 0C 03 04 04 24 // Write Class of Device Command  ClassOfDevice:04 04 24
 12 00 00 E1 3D 0B 00 03 FC 08 00 D1 50 98 04 00 01 01 //send HCI command "03 FC 08 00 D1 50 98 04 00 01 01 在50 98 04 00 写01
 0E 00 00 E1 3D 07 00 1E 0C 04 00 02 12 00 //send HCI command "1E 0C 04 00 02 12 00 // Write Inquiry Scan Activity Command
 0E 00 00 E1 3D 07 00 1C 0C 04 00 04 12 00 //send HCI command "1C 0C 04 00 04 12 00 //Write_Page_Scan_Activity 

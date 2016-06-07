@@ -1,0 +1,33 @@
+BT_RX	10 00 00 E1 55 09 00 4D 8D B2 BF 27 28 0C 02 5A 			//TCU_MNG_CONNECTION_REQUEST_EVENT remote device requests to connect to local device
+BT_TX	0F 00 00 E1 13 08 00 00 4D 8D B2 BF 27 28 00				//TCU_MNG_CONNECTION_ACCEPT_REQ   accept or reject for Bluetooth connection request from remote device
+BT_RX	08 00 00 E1 93 01 00 00 						//TCU_MNG_CONNECTION_ACCEPT_RESP  When TCU_MNG_CONNECTION_ACCEPT_REQ is completed, this response is generated. 
+	0F 00 00 E1 47 08 00 00 4D 8D B2 BF 27 28 00 				//TCU_MNG_CONNECTION_STATUS_EVENT 
+	12 00 00 E1 7D 0B 00 32 09 4D 8D B2 BF 27 28 01 00 03  			//TCU_MNG_SSP_INFO_EVENT command is used to notify information for SecureSimplePairing. 
+	17 00 00 E1 6E 10 00 4D 8D B2 BF 27 28 09 47 61 6C 61 78 79 20 53 36 	//TCU_MNG_REMOTE_DEVICE_NAME_AUTO_NOTIFY_EVENT To inform name of remote device, when security4. 
+	0F 00 00 E1 7D 08 00 31 06 4D 8D B2 BF 27 28				//TCU_MNG_SSP_INFO_EVENT command is used to notify information for SecureSimplePairing. 
+BT_TX	13 00 00 E1 3D 0C 00 2B 04 09 4D 8D B2 BF 27 28 00 00 04		//CU_MNG_STANDARD_HCI_SET_REQ set HCI command which is specified in the BluetoothCoreSpecifiction. 
+BT_RX	15 00 00 E1 BD 0E 00 00 0C 0E 0A 01 2B 04 00 4D 8D B2 BF 27 28		//TCU_MNG_STANDARD_HCI_SET_RESP ACK response for TCU_MNG_STANDARD_HCI_SET_REQ 
+	13 00 00 E1 7D 0C 00 33 0A 4D 8D B2 BF 27 28 44 E6 02 00		//TCU_MNG_SSP_INFO_EVENT command is used to notify information for SecureSimplePairing. 
+BT_TX	10 00 00 E1 3D 09 00 2C 04 06 4D 8D B2 BF 27 28				//TCU_MNG_STANDARD_HCI_SET_REQ set HCI command which is specified in the BluetoothCoreSpecifiction. 
+BT_RX	15 00 00 E1 BD 0E 00 00 0C 0E 0A 01 2C 04 00 4D 8D B2 BF 27 28 		//TCU_MNG_STANDARD_HCI_SET_RESP ACK response for TCU_MNG_STANDARD_HCI_SET_REQ 
+	10 00 00 E1 7D 09 00 36 07 00 4D 8D B2 BF 27 28				//TCU_MNG_SSP_INFO_EVENT command is used to notify information for SecureSimplePairing. 
+	20 00 00 E1 47 19 00 00 4D 8D B2 BF 27 28 03 7E A6 44 D8 40 11 F0 59 B6 42 0D A6 55 14 59 9E 04  //TCU_MNG_CONNECTION_STATUS_EVENT 更新link key
+	0F 00 00 E1 47 08 00 00 4D 8D B2 BF 27 28 01 				//TCU_MNG_CONNECTION_STATUS_EVENT 
+	10 00 00 E1 55 09 00 4D 8D B2 BF 27 28 0C 02 5A	//TCU_MNG_CONNECTION_REQUEST_EVENT remote device requests to connect to local device
+BT_TX	1F 00 00 E1 13 18 00 00 4D 8D B2 BF 27 28 01 7E A6 44 D8 40 11 F0 59 B6 42 0D A6 55 14 59 9E //TCU_MNG_CONNECTION_ACCEPT_REQ   accept or reject for Bluetooth connection request from remote device
+BT_RX	08 00 00 E1 93 01 00 00 			//TCU_MNG_CONNECTION_ACCEPT_RESP  TCU_MNG_CONNECTION_ACCEPT_REQ is completed, this response is generated. 
+	0F 00 00 E1 47 08 00 00 4D 8D B2 BF 27 28 00 	//TCU_MNG_CONNECTION_STATUS_EVENT 
+	1A 00 00 E5 43 13 00 00 4D 8D B2 BF 27 28 1F 02 09 47 61 6C 61 78 79 20 53 36	//TCU_MNG_DISCOVER_REMOTE_DEVICE_COMPLETE_EVENT When device searching is completed, this event is generated.  
+BT_TX	0C 00 00 EF 0E 05 00 00 00 00 00 00
+BT_RX	08 00 00 EF 8E 01 00 00
+BT_TX	09 00 00 EF 0D 02 00 02 00
+BT_RX	08 00 00 EF 8D 01 00 00 
+	0C 00 00 E1 7D 05 00 30 03 00 01 00		//TCU_MNG_SSP_INFO_EVENT  command is used to notify information for SecureSimplePairing. 
+	10 00 00 E5 48 09 00 07 00 31 32 33 34 35 36 37 //TCU_SPP_DATA_RECEIVE_EVENT To notify SPP Data, which is received from B-Party 
+	0F 00 00 E1 47 08 00 00 4D 8D B2 BF 27 28 01 	//TCU_MNG_CONNECTION_STATUS_EVENT 
+	0F 00 00 E5 44 08 00 00 4D 8D B2 BF 27 28 02	//TCU_SPP_DISCONNECT_EVENT This event is generated, when SPP disconnection is completed. 
+BT_TX	0C 00 00 EF 0E 05 00 00 20 00 44 00
+BT_RX	08 00 00 EF 8E 01 00 00
+
+
+BT_TX	12 00 00 e5 08 0b 00 09 00 61 73 64 66 67 68 6a 6b 6c  //手机向蓝牙发送数据
